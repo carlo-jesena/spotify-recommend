@@ -41,9 +41,19 @@ var getArtist = function(name) {
     })
     .then((relatedArtists) => {
         artist.related = relatedArtists.artists;
-        console.log(relatedArtists);
+        // console.log(artist);
         return artist;
     })
+    .then((arrRelatedArtist) => {
+        // console.log(arrRelatedArtist.related);
+        let arrayRelatedArtist = [];
+        arrRelatedArtist.related.forEach(item => {
+            console.log(item.id);
+           arrayRelatedArtist.push(getFromApi('artists/' + item.id + '/top-tracks?country=US'));
+            // console.log(artist);
+        });
+        console.log(arrayRelatedArtist);
+    });
 
    
 };
