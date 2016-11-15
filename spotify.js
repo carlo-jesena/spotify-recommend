@@ -22,10 +22,7 @@ var getArtist = function(name) {
         q: name,
         limit: 1,
         type: 'artist'
-
     }
-    getFromApi(searchUrl, searchQuery)
-    .then((item) => {
 
     };
     return getFromApi(searchUrl, searchQuery)
