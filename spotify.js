@@ -24,7 +24,7 @@ var getArtist = function(name) {
         type: 'artist'
     }
     getFromApi(searchUrl, searchQuery)
-    .then((response) => {
+    .then((item) => {
         artist = item.artists.items[0];
         return artist;
     })
