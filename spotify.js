@@ -48,12 +48,23 @@ var getArtist = function(name) {
         // console.log(arrRelatedArtist.related);
         let arrayRelatedArtist = [];
         arrRelatedArtist.related.forEach(item => {
-            console.log(item.id);
            arrayRelatedArtist.push(getFromApi('artists/' + item.id + '/top-tracks?country=US'));
             // console.log(artist);
         });
-        console.log(arrayRelatedArtist);
-    });
+        let allPromise = Promise.all(arrayRelatedArtist);
+        return allPromise;
+    })
+    .then((items) => {
+        console.log(items);
+        // let arrPromises = [];
+        items.forEach((item, index) => {
+            // how do i get all the related artists
+            artist.related[index].tracks =item.tracks; 
+            // console.log(item);
+
+        })
+        return artist;
+    })
 
    
 };
