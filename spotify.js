@@ -22,18 +22,18 @@ var getArtist = function(name) {
         q: name,
         limit: 1,
         type: 'artist'
-    }
-    getFromApi(searchUrl, searchQuery)
+    };
+    return getFromApi(searchUrl, searchQuery)
     .then((item) => {
         console.log(item);
         artist = item.artists.items[0];
         console.log(artist);
         return artist;
-    })
+    });
     
 
    
 };
 
 //this is just for testing
-getArtist('drake');
+// getArtist('drake');
