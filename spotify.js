@@ -17,5 +17,21 @@ var getFromApi = function(endpoint, query) {
 
 var artist;
 var getArtist = function(name) {
-    // Edit me!
+    let searchUrl = 'search';
+    let searchQuery = {
+        q: name,
+        limit: 1,
+        type: 'artist'
+    }
+    getFromApi(searchUrl, searchQuery)
+    .then((response) => {
+        artist = item.artists.items[0];
+        return artist;
+    })
+    
+
+   
 };
+
+//this is just for testing
+getArtist('drake');
