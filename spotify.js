@@ -24,19 +24,29 @@ var getArtist = function(name) {
         type: 'artist'
     }
 
-    };
     return getFromApi(searchUrl, searchQuery)
     .then((item) => {
-        console.log(item);
+        
 
         artist = item.artists.items[0];
-        console.log(artist);
+        //console.log(artist);
         return artist;
-    });
-    
+       
+    })
+    .catch(error=> {console.log(error)})
+    .then((artists) => {
+        id = artists.id;
+        //console.log(id);
+        return getFromApi(`artists/${id}/related-artists`);
+    })
+    .then((relatedArtists) => {
+        artist.related = relatedArtists.artists;
+        console.log(relatedArtists);
+        return artist;
+    })
 
    
 };
 
 //this is just for testing
-// getArtist('drake');
+getArtist('drake');
